@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-use Eotvos\VersenyBundle\Entity\Submission;
+use Eotvos\VersenyrBundle\Entity\Submission;
 use Eotvos\DemoBundle\Entity\UploadRoundSecurityToken;
 
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -93,8 +93,8 @@ class SimpleFileForm
             $fn = $file->getClientOriginalName();
 
             $submit = new Submission();
-            $submit->setUserId($user);
-            $submit->setRoundId($round);
+            $submit->setUser($user);
+            $submit->setRound($round);
             $submit->setData(json_encode(array('filename' => $fn)));
             if ($category!="") {
                 $submit->setCategory($category);

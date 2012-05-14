@@ -21,7 +21,7 @@ Ezen az oldalon  feltöltheted a fordulóhoz tartozó pályaművedet, aminek a k
 Kérjük, a pályaműbe ne írd bele a neved, hanem az azonosítódat használd. Azonosítód: {{ app.user.uniqueIdentifier }}
 </p>
 {% if not categories is empty %}
-<form method="post" action="{{ url('competition_round_upd_flashupload', { 'year' : 2011, 'sectionSlug': section.page.slug, 'roundSlug': round.page.slug, 'securityToken': token.token }) }}">
+<form method="post" action="{{ url('competition_round_upd_flashupload', { 'term' : term.name, 'sectionSlug': section.page.slug, 'roundSlug': round.page.slug, 'securityToken': token.token }) }}">
 Feladat: <select id="category">
 <option></option>
 {% for cat in categories %}
@@ -45,7 +45,7 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {
 function uploadSuccess(file, serverData) {
     $('#flashProgress .percent').html('FELTÖLTÉS SIKERES');
     $('#flashProgress .progress').width(400);
-    location.href = '{{ url('competition_round_upd_list', { 'year' : 2011, 'sectionSlug': section.page.slug, 'roundSlug': round.page.slug }) }} ';
+    location.href = '{{ url('competition_round_upd_list', { 'term' : term.name, 'sectionSlug': section.page.slug, 'roundSlug': round.page.slug }) }} ';
 }
 function uploadFail(file, errorCode, message) {
     $('#flashProgress .percent').html('FELTÖLTÉSI HIBA');
@@ -67,8 +67,8 @@ $(document).ready(function(){
     swfu.setPostParams(params);
   });
   swfu = new SWFUpload({
-    upload_url : "{{ url('competition_round_upd_flashupload', { 'year' : 2011, 'sectionSlug': section.page.slug, 'roundSlug': round.page.slug, 'securityToken': token.token }) }}",
-    flash_url : "{{ asset('bundles/eotvosverseny/flash/swfupload.swf') }}",
+    upload_url : "{{ url('competition_round_upd_flashupload', { 'term' : term.name, 'sectionSlug': section.page.slug, 'roundSlug': round.page.slug, 'securityToken': token.token }) }}",
+    flash_url : "{{ asset('bundles/eotvosversenyr/flash/swfupload.swf') }}",
 
     file_size_limit : "{{ config.maxfilesize }} KB",
     file_types : "*.{{ config.filetypes|join(";*.")|lower }}",
@@ -76,7 +76,7 @@ $(document).ready(function(){
     file_upload_limit : "0",
     file_queue_limit : "1",
 
-    button_image_url  : "{{ asset('bundles/eotvosverseny/images/swfupload.png') }}",
+    button_image_url  : "{{ asset('bundles/eotvosversenyr/images/swfupload.png') }}",
     button_placeholder_id : "uplflash",
     button_width: 61,
     button_height: 22,
@@ -98,7 +98,7 @@ $(document).ready(function(){
 {% endblock %}
 
 {% block rbody %}
-  {% include 'EotvosVersenyBundle:Competition:section_sidebar.html.twig' with { 'page' : section.page } %}
+  {% include 'EotvosVersenyrBundle:Competition:section_sidebar.html.twig' with { 'page' : section.page } %}
 {% endblock %}
 
 {% block breadcrumb %}
