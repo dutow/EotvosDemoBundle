@@ -1,0 +1,20 @@
+
+services:
+
+
+  eotvos.versenyr.roundtype.upload:
+    class: Eotvos\DemoBundle\RoundType\UploadType
+    tags:
+      - { name: eotvos.versenyr.roundtype }
+    calls:
+      - [ setContainer, [@service_container] ]
+
+  eotvos.versenyr.round.upload:
+    class: Eotvos\DemoBundle\Controller\UploadRoundController
+    calls:
+      - [ setContainer, [@service_container] ]
+
+  eotvos.demo.roundadmin.upload:
+    class: Eotvos\DemoBundle\Controller\UploadAdminController
+    calls:
+      - [ setContainer, [@service_container] ]
