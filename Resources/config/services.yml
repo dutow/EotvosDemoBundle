@@ -1,6 +1,10 @@
 
 services:
 
+  eotvos.versenyr.usertype.school:
+    class: Eotvos\DemoBundle\UserType\SchoolType
+    tags:
+      - { name: eotvos.versenyr.registrationtype }
 
   eotvos.versenyr.roundtype.upload:
     class: Eotvos\DemoBundle\RoundType\UploadType

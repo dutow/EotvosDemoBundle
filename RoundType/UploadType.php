@@ -32,11 +32,16 @@ class UploadType
     }
 
     $found = false;
-    foreach($user->getRegistrationForTerm($t)->getSections() as $userSec){
-      if($userSec->getId() == $section->getId()){
+    if ($user->GetRegistrationForTerm($t)) {
+        foreach($user->getRegistrationForTerm($t)->getSections() as $userSec){
+            if($userSec->getId() == $section->getId()){
+                $found = true;
+            }
+        }
+    } else {
         $found = true;
-      }
     }
+
     if(!$found) return array();
 
     $sr = $this->container->get('doctrine')->getRepository('\EotvosVersenyrBundle:Submission');

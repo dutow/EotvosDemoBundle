@@ -1,0 +1,48 @@
+<?php
+
+namespace Eotvos\DemoBundle\Entity;
+
+use Eotvos\VersenyrBundle\Entity\Registration;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SchoolRegistration 
+ * 
+ * @uses Registration
+ * @author    Zsolt Parragi <zsolt.parragi@cancellar.hu> 
+ * @copyright 2012 Cancellar
+ * @license   MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * @version   Release: v0.1
+ *
+ * @ORM\Entity
+ */
+class SchoolRegistration extends Registration
+{
+    /**
+     * @var integer $$points
+     *
+     * @ORM\Column(name="schoolyear", type="integer", nullable=true)
+     */
+    private $schoolyear;
+
+
+    /**
+     * Set schoolyear
+     *
+     * @param integer $schoolyear
+     */
+    public function setSchoolyear($schoolyear)
+    {
+        $this->schoolyear = $schoolyear;
+    }
+
+    /**
+     * Get schoolyear
+     *
+     * @return integer 
+     */
+    public function getSchoolyear()
+    {
+        return $this->schoolyear;
+    }
+}
